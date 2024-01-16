@@ -20,25 +20,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function sendFormData(formData, form) {
     const endpoint = form.getAttribute("action");
-    
+
     fetch(endpoint, {
       method: 'POST',
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        handleSuccessResponse();
+      } else {
+        handleErrorResponse();
       }
     })
-    .then(response => response.json())
-    .then(data => handleSuccessResponse(data))
-    .catch(error => handleErrorResponse(error));
+    .catch(error => {
+      handleErrorResponse();
+    });
   }
 
-  function handleSuccessResponse(response) {
-    alert(response.message); // Display Formspree's response
+  function handleSuccessResponse() {
+    alert("Form submitted successfully!");
     // You can customize this function based on your needs
   }
 
-  function handleErrorResponse(error) {
+  function handleErrorResponse() {
     alert("Error submitting form. Please try again later.");
   }
 });
