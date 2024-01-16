@@ -19,31 +19,26 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function sendFormData(formData, form) {
-    const xhr = new XMLHttpRequest();
     const endpoint = form.getAttribute("action");
-
-    xhr.open("POST", endpoint, true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          handleSuccessResponse(xhr.responseText);
-        } else {
-          handleErrorResponse(xhr.responseText);
-        }
+    
+    fetch(endpoint, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
       }
-    };
-
-    xhr.send(new URLSearchParams(formData).toString());
+    })
+    .then(response => response.json())
+    .then(data => handleSuccessResponse(data))
+    .catch(error => handleErrorResponse(error));
   }
 
   function handleSuccessResponse(response) {
-    alert(response); // Display Formspree's response
+    alert(response.message); // Display Formspree's response
     // You can customize this function based on your needs
   }
 
-  function handleErrorResponse(response) {
+  function handleErrorResponse(error) {
     alert("Error submitting form. Please try again later.");
   }
 });
