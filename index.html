@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Emergency Communication Website</title>
+</head>
+<body>
+  <header>
+    <h1>Emergency Communication Website</h1>
+  </header>
+
+  <section id="requestHelp">
+    <h2>Request Help</h2>
+    <p>If you are injured, trapped, or in danger, please fill out this form to request help. We will try to connect you with the nearest medical personnel or rescue team as soon as possible.</p>
+    <form id="requestHelpForm" action="submit_form.php" method="post">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="contact" placeholder="Your Contact Number" required>
+      <textarea name="message" placeholder="Describe your situation" required></textarea>
+      <button type="submit">Submit Request</button>
+    </form>
+  </section>
+
+  <section id="offerHelp">
+    <h2>Offer Help</h2>
+    <p>If you are a volunteer, a donor, or a service provider, and you want to offer help to the affected people, please fill out this form to register your details. We will try to match you with the most suitable requests for help.</p>
+    <form id="offerHelpForm" action="submit_form.php" method="post">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="contact" placeholder="Your Contact Number" required>
+      <textarea name="message" placeholder="How you can offer help" required></textarea>
+      <button type="submit">Submit Offer</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>For urgent assistance, please contact local emergency services.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+  </html>
