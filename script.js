@@ -15,8 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function handleFormSubmission(form) {
     const formData = new FormData(form);
 
-    // Optional: Add more advanced client-side validation here
-
     sendFormData(formData, form);
   }
 
@@ -41,13 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleSuccessResponse(response) {
-    // Optional: Display success message, redirect, or update UI
-    alert("Form submitted successfully!");
-    window.location.reload(); // Reload the page for simplicity
+    alert(response); // Display Formspree's response
+    // You can customize this function based on your needs
   }
 
   function handleErrorResponse(response) {
-    // Optional: Display error message or handle the error appropriately
     alert("Error submitting form. Please try again later.");
   }
 });
