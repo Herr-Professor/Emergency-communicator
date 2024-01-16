@@ -1,58 +1,67 @@
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f9fa;
+/* Use a custom font for the whole page */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+* {
+  font-family: 'Roboto', sans-serif;
 }
 
-header {
-  background-color: #343a40;
-  color: #ffffff;
+/* Use a dark blue background for the header and footer */
+header, footer {
+  background-color: #003366;
+  color: white;
+  padding: 20px;
+}
+
+/* Center the header title and make it larger */
+header h1 {
   text-align: center;
-  padding: 1em;
+  font-size: 3rem;
 }
 
+/* Use a light blue background for the sections */
 section {
-  max-width: 800px;
-  margin: 2em auto;
-  padding: 1em;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #cceeff;
+  padding: 20px;
 }
 
-form {
+/* Use a grid layout for the sections with two columns */
+section {
   display: grid;
-  gap: 1em;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
+/* Use a flexbox layout for the forms with column direction */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style the input and textarea elements */
 input, textarea {
-  width: 100%;
-  padding: 0.5em;
-  box-sizing: border-box;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-}
-
-button {
-  background-color: #007bff;
-  color: #ffffff;
-  padding: 0.5em 1em;
+  width: 80%;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
 }
 
-button:hover {
-  background-color: #0056b3;
+/* Style the submit buttons */
+button {
+  width: 40%;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #003366;
+  color: white;
+  font-weight: bold;
 }
 
-footer {
-  background-color: #343a40;
-  color: #ffffff;
-  text-align: center;
-  padding: 1em;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+/* Use media queries to make the layout responsive */
+@media (max-width: 768px) {
+  /* Use one column for the sections on smaller screens */
+  section {
+    grid-template-columns: 1fr;
+  }
 }
