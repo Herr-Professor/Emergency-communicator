@@ -1,48 +1,35 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const requestHelpForm = document.getElementById("requestHelpForm");
-  const offerHelpForm = document.getElementById("offerHelpForm");
+  const form = document.getElementById("my-form");
 
-  requestHelpForm.addEventListener("submit", function (event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    handleFormSubmission(requestHelpForm);
-  });
+    const status = document.getElementById("my-form-status");
+    const data = new FormData(event.target);
 
-  offerHelpForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    handleFormSubmission(offerHelpForm);
-  });
+    try {
+      const response = await fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
 
-  function handleFormSubmission(form) {
-    const formData = new FormData(form);
-
-    sendFormData(formData, form);
-  }
-
-  function sendFormData(formData, form) {
-    const endpoint = form.getAttribute("action");
-
-    fetch(endpoint, {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
       if (response.ok) {
-        handleSuccessResponse();
+        status.innerHTML = "Thanks for your submission!";
+        form.reset();
       } else {
-        handleErrorResponse();
+        const responseData = await response.json();
+        if (responseData.errors) {
+          status.innerHTML = responseData.errors.map(error => error.message).join(", ");
+        } else {
+          status.innerHTML = "Oops! There was a problem submitting your form.";
+        }
       }
-    })
-    .catch(error => {
-      handleErrorResponse();
-    });
+    } catch (error) {
+      status.innerHTML = "Oops! There was a problem submitting your form.";
+    }
   }
 
-  function handleSuccessResponse() {
-    alert("Form submitted successfully!");
-    // You can customize this function based on your needs
-  }
-
-  function handleErrorResponse() {
-    alert("Error submitting form. Please try again later.");
-  }
+  form.addEventListener("submit", handleSubmit);
 });
