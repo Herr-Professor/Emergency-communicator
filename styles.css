@@ -17,9 +17,9 @@ header h1 {
   font-size: 3rem;
 }
 
-/* Use a light blue background for the sections */
+/* Use a purple background for the sections */
 section {
-  background-color: #cceeff;
+  background-color: #773585;
   padding: 20px;
 }
 
@@ -53,7 +53,7 @@ button {
   border-radius: 10px;
   padding: 10px;
   margin: 10px;
-  background-color: #003366;
+  background-color: #357487;
   color: white;
   font-weight: bold;
 }
@@ -64,4 +64,23 @@ button {
   section {
     grid-template-columns: 1fr;
   }
+}
+
+/* Use Bootstrap classes to style the form elements */
+input, textarea {
+  /* Use the form-control class to add some Bootstrap styling */
+  /* https://getbootstrap.com/docs/3.3/css/#forms */
+  class: form-control;
+}
+
+button {
+  /* Use the btn and btn-lg classes to make the buttons larger and more rounded */
+  /* https://getbootstrap.com/docs/3.3/css/#buttons */
+  class: btn btn-lg;
+}
+
+/* Use a custom class to style the error messages */
+.error {
+  /* Use a red color for the error messages */
+  color: #FF0000;
 }
